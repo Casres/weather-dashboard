@@ -16,18 +16,28 @@
         <!-- where the user can search for the city -->
         <div id="city-search" class="d-flex flex-column col-md-3">
             <h2>search for a city</h2>
-            <textarea name="" id="" cols="30" rows="2" placeholder="Type City Here"></textarea>
-            <button id="">search</button>
+            <div class="input-group">
+                <!-- user input -->
+                <input id="user-input" class="form-control" type="text" cols="30" rows="2" placeholder="Enter City Here">   </input>
+                <!-- user input parent el -->
+                <div class="input-group-append">
+                    <!-- search btn for user input -->
+                    <button id="search-btn">search</button>
+                </div>
+            </div>
             <!-- search history goes here -->
             <div id="search-history" class="search-items d-inline-flex">
     
             </div>
         </div>
-        <div class="d-flex flex-column col-md-9">
+        <div class="d-flex flex-column col-md-9 ">
+            <div>
+                <img src="" alt="">
+            </div>
 
             <!-- the current weather info for the day in user searched city -->
             <div id="city-weather-info">
-                <h2>Atlanta</h2>
+                <h2 id="city-name-title">Atlanta</h2>
                 <div id="" class="list-group">
                     <p>Temp: <span id="temperature"> </span>°F</p>
                     <p>wind: <span id="wnd"> </span>mph</p>

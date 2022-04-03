@@ -5,11 +5,35 @@
 var temp = $("#temperature");
 var wind = $("#wnd");
 var humid = $("#humidity-reading");
+var searchHistoryItems= $("#search-history");
+var locationsArray = JSON.parse(localStorage.getItem("locations")) || [] ;
 
-// users city input
-var userInput = function (input) {
-    
+$("#search-btn").on("click", function () {
+    var userInput = $("#user-input").val();
+    locationsArray.push(userInput);
+    localStorage.setItem("locations", JSON.stringify(locationsArray));
+
+    displaySearchHistory(userInput);
+    console.log(userInput);
+});
+
+var displaySearchHistory = function () {
+    for (let i = 0; i < locationsArray.length; i++) {
+        const searchHistoryList = locationsArray[i];
+
+        var listItems = document.createElement('li')        
+        .className("search-list-item")
+        .text(searchHistoryItems);
+
+        console.log(listItems);
+
+        searchHistoryItems.appendChild(listItems);
+        // $("#search-history").append(listItems);
+
+    }
 }
+
+// function here to display search history 
 
 // current day weather API
 var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=Orlando&appid=b11cb0cfc1337df893547ad4b4c74492&units=imperial";
@@ -34,7 +58,7 @@ fetch(apiUrl2).then(function (data) {
     var days = $(".weekday-report");
     for (let i = 0; i < days.length; i++) {
       var day = days[i];
-      console.log(info);
+    //   console.log(info);
       // grabs the needed info rom API
       var tempReport = info.list[i].main.temp;
       // points to parent element that holds the child element where the info goes
