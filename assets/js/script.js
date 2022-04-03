@@ -6,6 +6,11 @@ var temp = $("#temperature");
 var wind = $("#wnd");
 var humid = $("#humidity-reading");
 
+// users city input
+var userInput = function (input) {
+    
+}
+
 // current day weather API
 var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=Orlando&appid=b11cb0cfc1337df893547ad4b4c74492&units=imperial";
 fetch(apiUrl).then(function (data) {
@@ -40,7 +45,7 @@ fetch(apiUrl2).then(function (data) {
       tempDay2.innerText = tempReport;
 
       // -----------------------------//
-      
+
       // does the same for the wind spd
       var windSpdReport = info.list[i].wind.speed;
       var windSpdDay = day.children[3];
@@ -58,8 +63,3 @@ fetch(apiUrl2).then(function (data) {
   });
 });
 
-// the current day forecast
-var currentDayWeather = function () {};
-
-// week forecast 5 day
-var fiveDayWeather = function () {};

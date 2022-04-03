@@ -2,6 +2,12 @@
     background: linear-gradient(135deg, #CE5937 0%, #1C6EA4 50%, #C59237 100%);
 } */
 
+#title {
+    background-color: #33475A;
+    padding: 1rem;
+    color: aliceblue;
+}
+
 .weekday-reports {
     margin-right: 5rem;
 }
