@@ -1,11 +1,63 @@
-/* #background {
+
+
+html {
+    padding-bottom: 8.5rem;
+}
+
+#background {
     background: linear-gradient(135deg, #CE5937 0%, #1C6EA4 50%, #C59237 100%);
-} */
+}
+
+p {
+    font-size: 1.75rem;
+}
+
+.city-title-style {
+    font-style: italic;
+    font-size: 5rem;
+    font: underline;
+    border-bottom: 2rem black;
+    bor
+}
+
+#user-instruction {
+    text-align: center;
+    color: aliceblue;
+    margin: 1rem;
+}
+
+#user-input {
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 0.45rem;
+    margin-left: 2rem;
+}
+
+#search-btn {
+    width: 100%;
+    padding: 0.01rem 6.5rem 0.01rem 6.5rem;
+    color: #212529;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 0.45rem;
+    margin-left: 2rem;
+}
 
 #title {
     background-color: #33475A;
     padding: 1rem;
     color: aliceblue;
+}
+
+#city-weather-info {
+    color: aliceblue;
+
 }
 
 .searchListItem {
@@ -14,6 +66,7 @@
     list-style: none;
     padding: 0.08rem;
     border-radius: 1rem;
+    /* margin: 5rem; */
 }
 
 .searchListItem:hover {
