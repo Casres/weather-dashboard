@@ -8,6 +8,21 @@
     color: aliceblue;
 }
 
+.searchListItem {
+    background-color: #33475A;
+    color: aliceblue;
+    list-style: none;
+    padding: 0.08rem;
+    border-radius: 1rem;
+}
+
+.searchListItem:hover {
+    background-color: aliceblue;
+    color: #33475A;
+    box-shadow: 9px 10px 31px -2px rgb(54, 54, 54);
+}
+
+
 .weekday-reports {
     margin-right: 5rem;
 }

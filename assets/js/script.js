@@ -14,26 +14,30 @@ $("#search-btn").on("click", function () {
     localStorage.setItem("locations", JSON.stringify(locationsArray));
 
     displaySearchHistory(userInput);
-    console.log(userInput);
 });
+
 
 var displaySearchHistory = function () {
     for (let i = 0; i < locationsArray.length; i++) {
+        // this is the current iteration of the loop we're in for the locationsArray
         const searchHistoryList = locationsArray[i];
-
-        var listItems = document.createElement('li')        
-        .className("search-list-item")
-        .text(searchHistoryItems);
+        // this creates the element for every iteration
+        var listItems = document.createElement('li');
+        var listItemsText = document.createElement('div');
 
         console.log(listItems);
+        listItems.className = ("searchListItem m-4")
+        listItemsText.className = ("searchListText m-3")
+        listItemsText.innerHTML = searchHistoryList
 
-        searchHistoryItems.appendChild(listItems);
-        // $("#search-history").append(listItems);
+        listItems.appendChild(listItemsText);
+        searchHistoryItems.append(listItems);
+
+
 
     }
 }
 
-// function here to display search history 
 
 // current day weather API
 var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=Orlando&appid=b11cb0cfc1337df893547ad4b4c74492&units=imperial";
@@ -87,3 +91,4 @@ fetch(apiUrl2).then(function (data) {
   });
 });
 
+displaySearchHistory()
