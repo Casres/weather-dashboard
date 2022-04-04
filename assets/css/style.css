@@ -1,11 +1,11 @@
 
 
 html {
-    padding-bottom: 8.5rem;
+    padding-bottom: 13.27rem;
 }
 
 #background {
-    background: linear-gradient(135deg, #CE5937 0%, #1C6EA4 50%, #C59237 100%);
+    background: linear-gradient(135deg, #2E72C5 0%, #0ED9FF 56%, #2E72C5 100%);
 }
 
 p {
@@ -17,7 +17,6 @@ p {
     font-size: 5rem;
     font: underline;
     border-bottom: 2rem black;
-    bor
 }
 
 #user-instruction {
