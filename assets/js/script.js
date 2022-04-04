@@ -1,46 +1,42 @@
-
-
-
-
 var temp = $("#temperature");
 var wind = $("#wnd");
 var humid = $("#humidity-reading");
-var searchHistoryItems= $("#search-history");
-var locationsArray = JSON.parse(localStorage.getItem("locations")) || [] ;
+var userInputText = $("#user-input");
+var searchHistoryItems = $("#search-history");
+var locationsArray = JSON.parse(localStorage.getItem("locations")) || [];
 
 $("#search-btn").on("click", function () {
-    var userInput = $("#user-input").val();
-    locationsArray.push(userInput);
-    localStorage.setItem("locations", JSON.stringify(locationsArray));
+  userInputText.value = "";
+  var userInput = $("#user-input").val();
+  locationsArray.push(userInput);
+  localStorage.setItem("locations", JSON.stringify(locationsArray));
 
-    displaySearchHistory(userInput);
+  displaySearchHistory(userInput);
 });
 
-
 var displaySearchHistory = function () {
-    for (let i = 0; i < locationsArray.length; i++) {
-        // this is the current iteration of the loop we're in for the locationsArray
-        const searchHistoryList = locationsArray[i];
-        // this creates the element for every iteration
-        var listItems = document.createElement('li');
-        var listItemsText = document.createElement('div');
+  $("#search-history").empty();
 
-        console.log(listItems);
-        listItems.className = ("searchListItem m-4")
-        listItemsText.className = ("searchListText m-3")
-        listItemsText.innerHTML = searchHistoryList
+  for (let i = 0; i < locationsArray.length; i++) {
+    // this is the current iteration of the loop we're in for the locationsArray
+    const searchHistoryList = locationsArray[i];
+    // this creates the element for every iteration
+    var listItems = document.createElement("li");
+    var listItemsText = document.createElement("div");
 
-        listItems.appendChild(listItemsText);
-        searchHistoryItems.append(listItems);
+    console.log(listItems);
+    listItems.className = "searchListItem m-4";
+    listItemsText.className = "searchListText m-3";
+    listItemsText.innerHTML = searchHistoryList;
 
-
-
-    }
-}
-
+    listItems.appendChild(listItemsText);
+    searchHistoryItems.append(listItems);
+  }
+};
 
 // current day weather API
-var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=Orlando&appid=b11cb0cfc1337df893547ad4b4c74492&units=imperial";
+var apiUrl =
+  "https://api.openweathermap.org/data/2.5/weather?q=Orlando&appid=b11cb0cfc1337df893547ad4b4c74492&units=imperial";
 fetch(apiUrl).then(function (data) {
   data.json().then(function (info) {
     // current day temperature
@@ -56,13 +52,14 @@ fetch(apiUrl).then(function (data) {
 });
 
 // weather forecast, 5 days
-var apiUrl2 = "https://api.openweathermap.org/data/2.5/forecast?q=Orlando&appid=b11cb0cfc1337df893547ad4b4c74492&units=imperial";
+var apiUrl2 =
+  "https://api.openweathermap.org/data/2.5/forecast?q=Orlando&appid=b11cb0cfc1337df893547ad4b4c74492&units=imperial";
 fetch(apiUrl2).then(function (data) {
   data.json().then(function (info) {
     var days = $(".weekday-report");
     for (let i = 0; i < days.length; i++) {
       var day = days[i];
-    //   console.log(info);
+      //   console.log(info);
       // grabs the needed info rom API
       var tempReport = info.list[i].main.temp;
       // points to parent element that holds the child element where the info goes
@@ -87,8 +84,8 @@ fetch(apiUrl2).then(function (data) {
       var humidityDay = day.children[4];
       var humidityDay2 = humidityDay.children[0];
       humidityDay2.innerText = humidityReport;
-    };
+    }
   });
 });
 
-displaySearchHistory()
+displaySearchHistory();
