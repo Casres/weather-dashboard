@@ -5,17 +5,37 @@ var uvi = $("#uvi-reading");
 var searchHistoryItems = $("#search-history");
 var locationsArray = JSON.parse(localStorage.getItem("locations")) || [];
 
-$("#search-btn").on("click", function () {
-  var userInput = $("#user-input").val();
-  locationsArray.push(userInput);
-  localStorage.setItem("locations", JSON.stringify(locationsArray));
 
+$("#user-input").keydown('Enter', function (key) {
+  console.log('test',key);
+})
+
+// userInputInitialGathering();
+
+
+$("#user-input").keydown(function (keyPressed) {
+  if (keyPressed.which == b) {
+    console.log(key);
+  } 
+})
+
+
+$("#search-btn").on("click", function () {
+  // capturing the users input
+  var userInput = $("#user-input").val();
+  // pushes to array 
+  locationsArray.push(userInput);
+  // stores array in local storage 
+  localStorage.setItem("locations", JSON.stringify(locationsArray));
+  // sends user input to the next function that'll use the input to display weather data to user 
   weatherData(userInput);
 
   displaySearchHistory(userInput);
+
   $("#user-input").val("");
 });
 
+// displays search history in a column
 var displaySearchHistory = function () {
   $("#search-history").empty();
 
@@ -36,9 +56,10 @@ var displaySearchHistory = function () {
   }
 };
 
+// takes the user input and uses it to se4arch in the api for the data related to the city (user input)
 function weatherData(userInputData) {
   var cityTitle = $("#city-name-title");
-  $(cityTitle).addClass("city-title-style");
+  $(cityTitle).addClass("city-title-style d-flex justify-content-center mb-5 mt-4");
   cityTitle.text(userInputData);
 
   // current day weather API

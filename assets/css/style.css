@@ -12,6 +12,10 @@ p {
     font-size: 1.75rem;
 }
 
+#title {
+    background-color: transparent;
+}
+
 .city-title-style {
     font-style: italic;
     font-size: 5rem;
