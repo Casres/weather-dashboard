@@ -58,58 +58,48 @@ fetch(apiUrl1).then(function (data) {
             // current day UV
             var currentUV = info.current.uvi;
             uvi.text(currentUV);
+
+            var days = $(".weekday-report");
+            for (let i = 0; i < days.length; i++) {
+            var day = days[i];
+
+            // var dateInfo = new Date(info.daily[i].dt*1000);
+            // var dateLayout = dateInfo.getDate(DD-MM-YYYY);
+            // var dateDay = day.children[0];
+            // dateDay.innerText = dateInfo;
+
+            // grabs the needed info rom API
+            var tempReport = info.daily[i].temp.day;
+            // points to parent element that holds the child element where the info goes
+            var tempDay = day.children[2];
+            // points to the child element (which in this case is a <span>) that the info goes into
+            var tempDay2 = tempDay.children[0];
+            // puts the info, grabbed from the API into the span element
+            tempDay2.innerText = tempReport;
+
+            // -----------------------------//
+
+            // does the same for the wind spd
+            var windSpdReport = info.daily[i].wind_speed;
+            var windSpdDay = day.children[3];
+            var windSpdDay2 = windSpdDay.children[0];
+            windSpdDay2.innerText = windSpdReport;
+
+            // -----------------------------//
+
+            // does the same for humidity
+            var humidityReport = info.daily[i].humidity;
+            var humidityDay = day.children[4];
+            var humidityDay2 = humidityDay.children[0];
+            humidityDay2.innerText = humidityReport;
+            }
+
         });
     });
   });
 });
 
 // weather forecast, 5 days
-var apiUrl3 =
-  "https://api.openweathermap.org/data/2.5/forecast?q=Orlando&appid=b11cb0cfc1337df893547ad4b4c74492&units=imperial";
-fetch(apiUrl3).then(function (data) {
-  data.json().then(function (info) {
-    var days = $(".weekday-report");
-    for (let i = 0; i < days.length; i++) {
-      var day = days[i];
-        console.log("check this out for 5 day week dates", info);
 
-      var date = info.list[1].dt_txt;
-      var date 
-
-
-
-
-
-
-
-
-
-      // grabs the needed info rom API
-      var tempReport = info.list[i].main.temp;
-      // points to parent element that holds the child element where the info goes
-      var tempDay = day.children[2];
-      // points to the child element (which in this case is a <span>) that the info goes into
-      var tempDay2 = tempDay.children[0];
-      // puts the info, grabbed from the API into the span element
-      tempDay2.innerText = tempReport;
-
-      // -----------------------------//
-
-      // does the same for the wind spd
-      var windSpdReport = info.list[i].wind.speed;
-      var windSpdDay = day.children[3];
-      var windSpdDay2 = windSpdDay.children[0];
-      windSpdDay2.innerText = windSpdReport;
-
-      // -----------------------------//
-
-      // does the same for humidity
-      var humidityReport = info.list[i].main.humidity;
-      var humidityDay = day.children[4];
-      var humidityDay2 = humidityDay.children[0];
-      humidityDay2.innerText = humidityReport;
-    }
-  });
-});
 
 displaySearchHistory();
