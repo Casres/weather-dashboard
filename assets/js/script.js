@@ -1,17 +1,17 @@
 var temp = $("#temperature");
 var wind = $("#wnd");
 var humid = $("#humidity-reading");
-var userInputText = $("#user-input");
+var uvi = $("#uvi-reading");
 var searchHistoryItems = $("#search-history");
 var locationsArray = JSON.parse(localStorage.getItem("locations")) || [];
 
 $("#search-btn").on("click", function () {
-  userInputText.value = "";
   var userInput = $("#user-input").val();
   locationsArray.push(userInput);
   localStorage.setItem("locations", JSON.stringify(locationsArray));
 
   displaySearchHistory(userInput);
+  $("#user-input").val("");
 });
 
 var displaySearchHistory = function () {
@@ -35,31 +35,55 @@ var displaySearchHistory = function () {
 };
 
 // current day weather API
-var apiUrl =
-  "https://api.openweathermap.org/data/2.5/weather?q=Orlando&appid=b11cb0cfc1337df893547ad4b4c74492&units=imperial";
-fetch(apiUrl).then(function (data) {
+var apiUrl1 =
+    "https://api.openweathermap.org/data/2.5/weather?q=Orlando&appid=b11cb0cfc1337df893547ad4b4c74492&units=imperial";
+fetch(apiUrl1).then(function (data) {
   data.json().then(function (info) {
-    // current day temperature
-    var currentTemp = info.main.temp;
-    temp.text(currentTemp);
-    // current day wind speed
-    var currentWind = info.wind.speed;
-    wind.text(currentWind);
-    // current day humidity
-    var currentHumidity = info.main.humidity;
-    humid.text(currentHumidity);
+    var latCord = info.coord.lat;
+    var lonCord = info.coord.lon;
+
+    var apiUrl2 =
+        "https://api.openweathermap.org/data/2.5/onecall?lat=" + latCord + "&lon=" + lonCord + "&exclude=hourly,minutely,alerts&appid=b11cb0cfc1337df893547ad4b4c74492&units=imperial";
+    fetch(apiUrl2).then(function (data) {
+        data.json().then(function (info) {
+            // current day temperature
+            var currentTemp = info.current.temp;
+            temp.text(currentTemp);
+            // current day wind speed
+            var currentWind = info.current.wind_speed;
+            wind.text(currentWind);
+            // current day humidity
+            var currentHumidity = info.current.humidity;
+            humid.text(currentHumidity);
+            // current day UV
+            var currentUV = info.current.uvi;
+            uvi.text(currentUV);
+        });
+    });
   });
 });
 
 // weather forecast, 5 days
-var apiUrl2 =
+var apiUrl3 =
   "https://api.openweathermap.org/data/2.5/forecast?q=Orlando&appid=b11cb0cfc1337df893547ad4b4c74492&units=imperial";
-fetch(apiUrl2).then(function (data) {
+fetch(apiUrl3).then(function (data) {
   data.json().then(function (info) {
     var days = $(".weekday-report");
     for (let i = 0; i < days.length; i++) {
       var day = days[i];
-      //   console.log(info);
+        console.log("check this out for 5 day week dates", info);
+
+      var date = info.list[1].dt_txt;
+      var date 
+
+
+
+
+
+
+
+
+
       // grabs the needed info rom API
       var tempReport = info.list[i].main.temp;
       // points to parent element that holds the child element where the info goes
