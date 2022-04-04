@@ -13,17 +13,22 @@
     <!-- where all content will be displayed -->
     <main class="row">
         <h1 id="title" class="col-md-12 d-flex justify-content-center">Weather Dashboard</h1>
+
+        <!-- what the user is presented with when they first open the website/app -->
+        <section id="initial-presentation-area" class="col-12 row-5">
+            <h2 >Search the city you would like weather info on</h2>
+        </section>
+
         <!-- where the user can search for the city -->
-        <div id="city-search" class="d-flex flex-column col-md-3">
-            <h2 id="user-instruction">search for a city</h2>
+        <div id="city-search" class="d-flex flex-column col-md-3 ">
+            <h2 id="user-instruction">Search For A City</h2>
             <div class="input-group">
-                <!-- user input -->
-                <input id="user-input" type="text">
-                <!-- user input parent el -->
-                <div >
+                <form id="sbmt-user-input-form">
+                    <!-- user input -->
+                    <input id="user-input" type="text">
                     <!-- search btn for user input -->
-                    <button id="search-btn">search</button>
-                </div>
+                    <button id="search-btn" type="">search</button>
+                </form>
                 <div id="place-holder"> </div>
             </div>
             <!-- search history goes here -->
@@ -39,6 +44,7 @@
             <!-- the current weather info for the day in user searched city -->
             <div id="city-weather-info" class="" >
                 <h1 id="city-name-title"> <span id="current-day-time"></span> </h1>
+                <div id="current-weather-icon"> </div>
                 <div id="" class="list-group align-items-center">
                     <p>Temp: <span id="temperature"> </span>°F</p>
                     <p>wind: <span id="wnd"> </span>mph</p>
