@@ -82,16 +82,14 @@ var weatherDisplay = function (data) {
     data.json().then(function (info) {
     var latCord = info.coord.lat;
     var lonCord = info.coord.lon;
-    console.log();
 
     var apiUrl2 = "https://api.openweathermap.org/data/2.5/onecall?lat=" + latCord + "&lon=" + lonCord + "&exclude=hourly,minutely,alerts&appid=b11cb0cfc1337df893547ad4b4c74492&units=imperial";
     fetch(apiUrl2).then(function (data) {
-      console.log('testing',data);
       data.json().then(function (info) {
         // current day date
         // var currentDayDate = info.daily[i].dt;
-        var currentWeatherIcon = info.weather.icon;
-        icon.img(currentWeatherIcon);
+        // var currentWeatherIcon = info.weather.icon;
+        // icon.img(currentWeatherIcon);
         // current day temperature
         var currentTemp = info.current.temp;
         temp.text(currentTemp);
